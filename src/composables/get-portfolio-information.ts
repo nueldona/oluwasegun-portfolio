@@ -1,4 +1,4 @@
-import { main, about, skill, social } from "@/types/main";
+import { main, about, skill, social, project } from "@/types/main";
 export default () => {
   const fetchPersonalDataFromApi = async (): Promise<main> => {
     const response = await fetch("/api/personal_information");
@@ -28,5 +28,12 @@ export default () => {
     }
     return response.json();
   };
-  return {fetchPersonalDataFromApi, fetchAboutDataFromApi, fetchTechStackDataFromApi, fetchSocialDataFromApi};
+  const fetchProjectDataFromApi = async (): Promise<project[]> => {
+    const response = await fetch("/api/project_information");
+    if (!response.ok) {
+      throw new Error("oops! something went wrong.");
+    }
+    return response.json();
+  };
+  return {fetchPersonalDataFromApi, fetchAboutDataFromApi, fetchTechStackDataFromApi, fetchSocialDataFromApi, fetchProjectDataFromApi};
 };

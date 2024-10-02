@@ -9,6 +9,7 @@ type project = {
   image: string;
   techstack: string;
   category: string;
+  description: string;
   links: {
     visit: string;
     code: string;
@@ -44,8 +45,8 @@ type data = {
   main: main;
   about: about;
   skills: skill[];
-  projects?: project[];
-  socials?: social[];
+  projects: project[];
+  socials: social[];
 };
 
 export type { data, main, about, skill, project, social };

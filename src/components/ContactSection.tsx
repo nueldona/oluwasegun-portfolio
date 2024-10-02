@@ -18,7 +18,7 @@ const ContactSection = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  // const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,7 +39,7 @@ const ContactSection = () => {
         if (res.status === 200) {
           setValues({ name: "", email: "", message: "" });
           setLoading(false);
-          setSuccess(true);
+          // setSuccess(true);
           toast.success(res.data.message);
         } else {
           setLoading(false);
@@ -87,9 +87,9 @@ const ContactSection = () => {
         <div className="flex-1">
           <h3 className="text-2xl">Get in touch</h3>
           <p className="text-gray-400 mb-4 text-sm md:text-base">
-            Feel free to drop by anytime! 💌 Whether you have a question that's
-            been on your mind 🔥 or just want to say a friendly "hello" 👋, I'm
-            here and ready to chat! 🗣️ Let's connect and make it fun! 🎉✨
+            Feel free to drop by anytime! 💌 Whether you have a question that&apos;s
+            been on your mind 🔥 or just want to say a friendly &quot;hello&quot; 👋, I&apos;m
+            here and ready to chat! 🗣️ Let&apos;s connect and make it fun! 🎉✨
           </p>
 
           <form

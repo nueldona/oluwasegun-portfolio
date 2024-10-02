@@ -1,7 +1,4 @@
 import React from "react";
-import { useTheme } from "next-themes";
-import Link from "next/link";
-import * as Fa from "react-icons/fa";
 import { social } from "@/types/main";
 
 interface FooterSectionProps {
@@ -9,9 +6,7 @@ interface FooterSectionProps {
   name?: string;
 }
 
-const FooterSection: React.FC<FooterSectionProps> = ({ socials, name }) => {
-  const { theme } = useTheme()
-  console.log(socials)
+const FooterSection: React.FC<FooterSectionProps> = ({ name }) => {
   return (
     <footer className="w-full bg-blue-600 dark:bg-gray-800 text-gray-200 dark:text-white mt-10">
       <div className="flex items-center justify-center p-6">

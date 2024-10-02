@@ -36,32 +36,39 @@ const ProjectCard = ({ project }: { project: project }) => {
             height={500}
             quality={100}
             src={
-              "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80"
+              project.image == ""
+                ? "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80"
+                : project.image
             }
           />
           <div className="py-6 px-8 rounded-lg bg-white">
             <h1 className="text-gray-700 font-bold mb-3 hover:text-gray-900 hover:cursor-pointer">
-              I'm supper dog for you.
+              {project.name}
             </h1>
-            <p className="text-gray-700 text-sm">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum,
-              labore. Ea debitis beatae sequi deleniti.
+            <p className="text-gray-700 text-sm mb-3">{project.description}</p>
+            <p className="text-gray-500 text-xs">
+              {" "}
+              <span className="font-bold">Techstack:</span> {project.techstack}
             </p>
             <div className="flex justify-between items-center mt-4">
               <Link
-                href=""
+                href={project?.links?.code}
                 target="_blank"
                 className="w-fit text-sm md:text-base p-2 cursor-pointer flex items-center gap-1 rounded-md bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 hover:dark:bg-blue-800 transition-colors group text-white uppercase tracking-wider shadow-lg duration-300"
               >
                 <BsGithub />
               </Link>
-              <Link
-                href=""
-                target="_blank"
-                className="w-fit text-sm md:text-base p-2 cursor-pointer flex items-center gap-1 rounded-md bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 hover:dark:bg-gray-800 transition-colors group text-white uppercase tracking-wider shadow-lg duration-300"
-              >
-                <FaExternalLinkAlt />
-              </Link>
+              {project?.links?.visit !== "" ? (
+                <Link
+                  href={project?.links?.visit}
+                  target="_blank"
+                  className="w-fit text-sm md:text-base p-2 cursor-pointer flex items-center gap-1 rounded-md bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 hover:dark:bg-gray-800 transition-colors group text-white uppercase tracking-wider shadow-lg duration-300"
+                >
+                  <FaExternalLinkAlt />
+                </Link>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>

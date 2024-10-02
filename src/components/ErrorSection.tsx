@@ -3,14 +3,14 @@ import React from "react";
 import Image from "next/image";
 import ErrorImage from "@/public/icons8-error.gif";
 import BigErrorImage from "@/public/11235921_11104-removebg-preview.png";
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 
-const refreshPage = () => {
-  const router = useRouter();
-  router.reload();
-};
+// const refreshPage = () => {
+//   const router = useRouter();
+//   router.reload();
+// };
 
-const ErrorSection = ({ error }: { error: string }) => {
+const ErrorSection = () => {
   return (
     <div className="flex flex-col justify-center items-center h-screen">
       <div className="flex items-center gap-x-2">

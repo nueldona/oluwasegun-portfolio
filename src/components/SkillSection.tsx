@@ -27,7 +27,7 @@ const AboutSkills = ({ skillData }: { skillData: skill[] }) => {
       </div>
       <h2 className="text-4xl text-center">Tech Stack</h2>
       <div className="max-w-[750px] lg:w-3/4 2xl:w-3/5 my-12 mx-auto px-5 md:px-12 flex flex-wrap justify-center place-items-center gap-6">
-        {skillData.map((s: any, i: number) => (
+        {skillData.map((s: skill, i: number) => (
           <SkillCard key={i} {...s} />
         ))}
       </div>

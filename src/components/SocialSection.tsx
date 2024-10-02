@@ -20,7 +20,7 @@ const SocialSection = ({ socials }: { socials: social[] }) => {
             className="grid place-items-center p-3 hover:animate-bounce rounded bg-blue-700 text-white"
           >
             {
-              //@ts-ignore
+              // @ts-expect-error ScrollLink does not support some props in types but they are safe
               React.createElement(Fa[`${s.icon}`])
             }
           </Link>

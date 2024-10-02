@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { Link as ScrollLink } from "react-scroll";
@@ -10,13 +10,52 @@ const HeaderSection = () => {
   const [navCollapse, setNavCollapse] = useState(true);
   const [scroll, setScroll] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [activeSection, setActiveSection] = useState("");
+
+  // Memoizing the navs array so that it's only initialized once
+  const navs = useMemo(() => ["home", "about", "projects", "contact"], []);
+
   useEffect(() => {
     const updateScroll = () => {
       window.scrollY >= 90 ? setScroll(true) : setScroll(false);
     };
     window.addEventListener("scroll", updateScroll);
+    return () => {
+      window.removeEventListener("scroll", updateScroll);
+    };
   }, []);
-  const navs = ["home", "about", "projects", "contact"];
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      threshold: 0.5,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, options);
+
+    navs.forEach((section) => {
+      const sectionElement = document.getElementById(section);
+      if (sectionElement) {
+        observer.observe(sectionElement);
+      }
+    });
+
+    return () => {
+      navs.forEach((section) => {
+        const sectionElement = document.getElementById(section);
+        if (sectionElement) {
+          observer.unobserve(sectionElement);
+        }
+      });
+    };
+  }, [navs]);
+
   return (
     <>
       <header
@@ -26,21 +65,19 @@ const HeaderSection = () => {
       >
         <nav className="lg:w-11/12 2xl:w-4/5 w-full md:px-6 2xl:px-0 mx-auto py-6 hidden sm:flex items-center justify-between">
           <Link
-            href={"/"}
-            className="2xl:ml-6 hover:text-blue-700 hover:dark:text-blue-00 transition-colors duration-300"
+            href="/"
+            className="2xl:ml-6 hover:text-blue-700 hover:dark:text-blue-500 font-bold text-xl transition-colors duration-300"
           >
-            {/* {logo === "Jigar Sable" ? (
-              <FaNodeJs size={28} />
-            ) : (
-              <span className="text-lg font-medium">{logo.split(" ")[0]}</span>
-            )} */}
+            Oluwasegun
           </Link>
 
           <ul className="flex items-center gap-10">
             {navs.map((e, i) => (
               <li key={i}>
                 <ScrollLink
-                  className="hover:text-blue-700 hover:dark:text-blue-500 font-semibold transition-colors capitalize cursor-pointer"
+                  className={`${
+                    activeSection === e && "text-blue-700"
+                  } hover:text-blue-700 hover:dark:text-blue-500 font-semibold transition-colors capitalize cursor-pointer`}
                   to={e}
                   offset={-60}
                   smooth={true}
@@ -61,11 +98,12 @@ const HeaderSection = () => {
         </nav>
 
         <nav className="p-4 flex sm:hidden items-center justify-between">
-          {/* {logo === "Jigar Sable" ? (
-            <FaNodeJs size={28} />
-          ) : (
-            <span className="text-lg font-medium">{logo.split(" ")[0]}</span>
-          )} */}
+          <Link
+            href="/"
+            className="2xl:ml-6 hover:text-blue-700 hover:dark:text-blue-500 font-bold text-xl transition-colors duration-300"
+          >
+            Oluwasegun
+          </Link>
           <div className="flex items-center gap-4">
             <span
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

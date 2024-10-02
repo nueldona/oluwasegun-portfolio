@@ -1,28 +1,29 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import LinesAnimation from "@/components/utilities/LinesAnimation";
 
+
 const loading = () => {
-  const barVariants = {
+  const barVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         repeat: Infinity,
-        repeatType: "loop" as any,
+        repeatType: "loop",
         duration: 1,
         staggerChildren: 0.2,
       },
     },
   };
-  const barTransition = {
+  const barTransition: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         repeat: Infinity,
-        repeatType: "loop" as any,
+        repeatType: "loop",
         duration: 1,
       },
     },

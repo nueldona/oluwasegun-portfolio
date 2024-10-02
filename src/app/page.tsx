@@ -18,19 +18,22 @@ const {
   fetchAboutDataFromApi,
   fetchTechStackDataFromApi,
   fetchSocialDataFromApi,
+  fetchProjectDataFromApi
 } = getPortfolioInformation();
 const fetchAllData = async (): Promise<data> => {
-  const [main, about, skills, socials] = await Promise.all([
+  const [main, about, skills, socials, projects] = await Promise.all([
     fetchPersonalDataFromApi(),
     fetchAboutDataFromApi(),
     fetchTechStackDataFromApi(),
-    fetchSocialDataFromApi()
+    fetchSocialDataFromApi(),
+    fetchProjectDataFromApi()
   ]);
   return {
     main,
     about,
     skills,
-    socials
+    socials,
+    projects
   };
 };
 export default function Home() {
@@ -41,7 +44,7 @@ export default function Home() {
   if (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     console.error(errorMessage);
-    return <ErrorSection error={errorMessage} />;
+    return <ErrorSection />;
   }
   return (
     <>
@@ -50,7 +53,7 @@ export default function Home() {
       {data?.socials && <SocialSection socials={data.socials} />}
       {data?.about && <AboutSection about={data.about} />}
       {data?.skills && <AboutSkills skillData={data.skills} />}
-      {data?.skills && <ProjectSection projects={[{}] as any} />}
+      {data?.projects && <ProjectSection projects={data.projects} />}
       {data?.skills && <ContactSection />}
       {data?.socials && data?.main && (<FooterSection socials={data.socials} name={data?.main?.name} />)}
     </>
