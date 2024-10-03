@@ -95,6 +95,8 @@ async function initAdmin() {
 initAdmin();
 const db: Firestore = getFirestore();
 
-export default {
+const firebaseService = {
   db,
 };
+
+export default firebaseService;

@@ -1,5 +1,5 @@
 import { main, about, skill, social, project } from "@/types/main";
-export default () => {
+const usePortfolioInformation = () => {
   const fetchPersonalDataFromApi = async (): Promise<main> => {
     const response = await fetch("/api/personal_information");
     if (!response.ok) {
@@ -37,3 +37,5 @@ export default () => {
   };
   return {fetchPersonalDataFromApi, fetchAboutDataFromApi, fetchTechStackDataFromApi, fetchSocialDataFromApi, fetchProjectDataFromApi};
 };
+
+export default usePortfolioInformation;

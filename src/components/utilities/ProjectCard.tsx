@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsGithub } from "react-icons/bs";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import projectDefaultImg from "@/public/18907.jpg";
 
 const cardVariants = {
   hidden: { y: 50, opacity: 0 },
@@ -26,7 +27,7 @@ const ProjectCard = ({ project }: { project: project }) => {
       ref={ref}
       variants={cardVariants}
       animate={inView ? "visible" : "hidden"}
-      className="flex flex-col gap-2 bg-white dark:bg-gray-800 rounded-lg p-4"
+      className="flex flex-col gap-2 bg-white dark:bg-gray-800 rounded-lg mx-auto p-4"
     >
       <div className="max-w-sm">
         <div className="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
@@ -37,7 +38,7 @@ const ProjectCard = ({ project }: { project: project }) => {
             quality={100}
             src={
               project.image == ""
-                ? "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80"
+                ? projectDefaultImg
                 : project.image
             }
           />

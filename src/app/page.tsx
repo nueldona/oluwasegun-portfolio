@@ -53,7 +53,7 @@ export default function Home() {
       {data?.socials && <SocialSection socials={data.socials} />}
       {data?.about && <AboutSection about={data.about} />}
       {data?.skills && <AboutSkills skillData={data.skills} />}
-      {data?.projects && <ProjectSection projects={data.projects} />}
+      {data?.projects && <ProjectSection projects={data.projects} social_link={data.socials[1].link} />}
       {data?.skills && <ContactSection />}
       {data?.socials && data?.main && (<FooterSection socials={data.socials} name={data?.main?.name} />)}
     </>

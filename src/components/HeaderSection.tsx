@@ -11,18 +11,23 @@ const HeaderSection = () => {
   const [scroll, setScroll] = useState(false);
   const { theme, setTheme } = useTheme();
   const [activeSection, setActiveSection] = useState("");
-
-  // Memoizing the navs array so that it's only initialized once
   const navs = useMemo(() => ["home", "about", "projects", "contact"], []);
 
   useEffect(() => {
     const updateScroll = () => {
-      window.scrollY >= 90 ? setScroll(true) : setScroll(false);
+      if (window.scrollY >= 90) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
     };
-    window.addEventListener("scroll", updateScroll);
-    return () => {
-      window.removeEventListener("scroll", updateScroll);
-    };
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", updateScroll);
+
+      return () => {
+        window.removeEventListener("scroll", updateScroll);
+      };
+    }
   }, []);
 
   useEffect(() => {

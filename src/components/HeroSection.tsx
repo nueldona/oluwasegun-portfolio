@@ -22,7 +22,7 @@ const HeroSection = ({ main }: { main: main }) => {
           theme === "dark" && "bg-gray-900"
         } relative min-h-screen w-full mx-auto overflow-hidden`}
       >
-        <div className="absolute -z-10 min-h-screen h-full w-full">
+        <div className="hidden lg:block absolute -z-10 min-h-screen h-full w-full">
           <Image
             src={heroBgImage}
             fill
