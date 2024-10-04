@@ -20,36 +20,39 @@ export const metadata: Metadata = {
     "Lagos",
   ],
   authors: [{ name: "Oluwasegun Aiyedona" }],
-  icons: [
-    {
-      rel: 'icon',
-      sizes: '16x16',
-      type: "image/x-icon",
-      url: '/favicon.ico',
-    },
-    {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '32x32',
-      url: '/favicon-32x32.png',
-    },
-    {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '16x16',
-      url: '/favicon-16x16.png',
-    },
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      url: '/apple-touch-icon.png',
-    },
-  ],
+  icons: {
+    icon: [
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        url: "/favicon.ico",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        url: "/favicon-32x32.png",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        url: "/favicon-16x16.png",
+      },
+    ],
+    apple: [
+      {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        url: "/apple-touch-icon.png",
+      },
+    ],
+  },
   openGraph: {
     title: "Portfolio | Oluwasegun Aiyedona - Software Engineer",
     description:
       "Explore Oluwasegun Aiyedona's portfolio showcasing innovative web applications.",
-    url: "https://yourportfolio.com",
+    url: "https://nueldona.vercel.app",
     siteName: "Oluwasegun Aiyedona's Portfolio",
     images: [
       {
@@ -63,7 +66,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
-
 
 export default function RootLayout({
   children,
